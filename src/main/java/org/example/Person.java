@@ -20,12 +20,12 @@ public class Person {
         this.id = id;
     }
     public void save(DatabaseConnector dbc){
-        String insert = "insert in to person values (" +
-                " ' " + this.username+ "'," +
-                " ' " + this.email+ "'," +
-                " ' " + this.pass+ "'," +
-                this.enabled + "," +
-                this.id;
+        String insert = "Insert into person values ('" +
+                this.username + "', '" +
+                this.email + "', '" +
+                this.pass + "', " +
+                this.enabled.toString() + ", " +
+                this.id + ")";
         dbc.executeInsert(insert);
     }
     public void read(DatabaseConnector dbc) throws SQLException {
@@ -38,7 +38,7 @@ public class Person {
             boolean enabled = rs.getBoolean("enabled");
             long id = rs.getLong("id");
             Person p = new Person(username, email, pass, enabled, (int) id);
-            // przetwarzanie obiektu Person
+
             System.out.println(" username: " + username + ", email: " + email + ", pass: " + pass + ", enabled: " + enabled + ", id: " + id);
         }
     }

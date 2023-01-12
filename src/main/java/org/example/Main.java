@@ -22,7 +22,7 @@ public class Main {
             System.out.print("> ");
 
             int option = scanner.nextInt();
-            scanner.nextLine();  // konsumowanie nowego wiersza po wczytaniu int
+            scanner.nextLine();
 
             switch (option) {
                 case 1:
@@ -34,15 +34,15 @@ public class Main {
                     String pass = scanner.nextLine();
                     System.out.print("Zatrudniony? (true/false): ");
                     boolean enabled = scanner.nextBoolean();
-                    scanner.nextLine();  // konsumowanie nowego wiersza po wczytaniu boolean
-                    Person p = new Person("","", "",false, -1);
+                    scanner.nextLine();
+                    Person p = new Person(username,email, pass,enabled, -1);
                     p.save(dbc);
                     break;
 
                 case 2:
                     System.out.print("Podaj nazwę użytkownika: ");
                     username = scanner.nextLine();
-                    p = new Person("","", "",false, -1);
+                    p = new Person(username,"", "",false, -1);
                     try {
                         p.read(dbc);
                     } catch (SQLException e) {
@@ -57,10 +57,10 @@ public class Main {
                     String email2 = scanner.nextLine();
                     System.out.print("Podaj hasło: ");
                     String pass2 = scanner.nextLine();
-                    System.out.print("Podaj stan aktywności (true/false): ");
+                    System.out.print("Zatrudniony? (true/false): ");
                     boolean enabled2 = scanner.nextBoolean();
-                    scanner.nextLine();  // konsumowanie nowego wiersza po wczytaniu boolean
-                    Person p2 = new Person("","", "",false, -1);
+                    scanner.nextLine();
+                    Person p2 = new Person(username2,email2, pass2,enabled2, -1);
                     p2.update(dbc);
                     break;
 
@@ -68,7 +68,7 @@ public class Main {
 
                     System.out.print("Podaj nazwę użytkownika: ");
                     username = scanner.nextLine();
-                    p = new Person("","", "",false, -1);
+                    p = new Person(username,"", "",false, -1);
                     p.delete(dbc);
                     break;
 
